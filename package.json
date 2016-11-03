@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/eontool/nodejs-typescript-boilerplate#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11"
   },
   "devDependencies": {
     "@types/express": "^4.0.33",
+    "@types/mongodb": "^2.1.33",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
