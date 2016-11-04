@@ -33,38 +33,29 @@ export default class MongoConnector {
             });
         });
     }
+    
+    private callMethod(fn: Promise<string>): Promise<string> {
+        return new Promise(
+            (resolve, reject) => {
+                fn.then(
+                    (data) => {
+                        resolve(data)
+                    },
+                    (error) => {
+                        reject(error)
+                    }
+                ).catch((error) => {
+                    console.log(error);
+                });
+            }
+        );
+    }
 
     public getListOfDatabases(): Promise<string> {
-        return new Promise(
-            (resolve, reject) => {
-                this.database.admin().listDatabases().then(
-                    (data) => {
-                        resolve(data)
-                    },
-                    (error) => {
-                        reject(error)
-                    }
-                ).catch((error) => {
-                    console.log(error);
-                });
-            }
-        );
-    } 
+        return this.callMethod(this.database.admin().listDatabases());
+    }
 
     public ping(): Promise<string> {
-        return new Promise(
-            (resolve, reject) => {
-                this.database.admin().ping().then(
-                    (data) => {
-                        resolve(data)
-                    },
-                    (error) => {
-                        reject(error)
-                    }
-                ).catch((error) => {
-                    console.log(error);
-                });
-            }
-        );
-    } 
+        return this.callMethod(this.database.admin().ping());
+    }
 }

@@ -25,9 +25,9 @@ class MongoConnector {
             });
         });
     }
-    getListOfDatabases() {
+    callMethod(fn) {
         return new Promise((resolve, reject) => {
-            this.database.admin().listDatabases().then((data) => {
+            fn.then((data) => {
                 resolve(data);
             }, (error) => {
                 reject(error);
@@ -36,16 +36,11 @@ class MongoConnector {
             });
         });
     }
+    getListOfDatabases() {
+        return this.callMethod(this.database.admin().listDatabases());
+    }
     ping() {
-        return new Promise((resolve, reject) => {
-            this.database.admin().ping().then((data) => {
-                resolve(data);
-            }, (error) => {
-                reject(error);
-            }).catch((error) => {
-                console.log(error);
-            });
-        });
+        return this.callMethod(this.database.admin().ping());
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
