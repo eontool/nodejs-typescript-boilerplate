@@ -1,9 +1,10 @@
 kind: pipeline
 type: docker
 name: backend
+
 steps:
-    - name: build
-    image: node:latest
-    commands:
-        - node -v
-        - npm -v
+- name: build
+  image: node:latest
+  commands:
+  - node -v
+  - npm -v
