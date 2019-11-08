@@ -2,7 +2,7 @@ kind: pipeline
 type: docker
 name: backend
 steps:
-    name: build
+    - name: build
     image: node:latest
     commands:
         - node -v
