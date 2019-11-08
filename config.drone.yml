@@ -1,0 +1,5 @@
+# pipeline describes build steps
+pipeline:
+  test:
+    commands:
+      - "test"
