@@ -8,3 +8,6 @@ steps:
   commands:
   - node -v
   - npm -v
+  when:
+    event: merge
+    branch: master
